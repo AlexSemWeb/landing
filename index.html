@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лэндинг</title>
+    <link rel="shortcut icon" href="/img/hands.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <div class="container">
+        <transition name="fade" mode="out-in">
+          <div class="content loader" v-if="page === 0" :key="0">
+            <div class="wrapper">
+              <div class="loader--container">
+                <span class="loader__img"
+                  ><img src="img/loader.svg" alt=""
+                /></span>
+
+                <span class="loader__text">Loading</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="content main"
+            v-else-if="page === 1"
+            v-scroll="opacity"
+            :key="1"
+          >
+            <div class="main__banner">
+              <div class="wrapper">
+                <div class="header">Лучшие астрологи и экстрасенсы Румынии</div>
+                <span class="subheader">Точность прогноза: 97%</span>
+                <div class="face">
+                  <img
+                    src="img/face-bg.svg"
+                    alt="Задний фон лица"
+                    title="Задний фон лица"
+                    class="face__bg"
+                  />
+                  <img
+                    src="img/face.png"
+                    alt="Лицо"
+                    title="Лицо"
+                    class="face__img"
+                  />
+                </div>
+                <span class="worry text"
+                  >Вас беспокоит вопрос о том,
+                  <br />
+                  <span class="capitilize"
+                    >когда Вы покинете этот Мир и при каких
+                    обстоятельствах?</span
+                  >
+                </span>
+                <div class="btn--container">
+                  <button type="button" class="btn" v-on:click="toNextPage">
+                    <span class="btn__text">Да</span>
+                  </button>
+                  <button type="button" class="btn" v-on:click="toNextPage">
+                    <span class="btn__text">Нет</span>
+                  </button>
+                  <span class="btn__help">Онлайн предсказание</span>
+                </div>
+              </div>
+            </div>
+            <div class="main__help js-main-help">
+              <div class="wrapper">
+                <div class="main__help--container">
+                  <span class="img">
+                    <img src="img/hands.png" alt="Руки" title="Руки" />
+                  </span>
+                  <span class="text">
+                    Позвольте нам раскрыть эту волнующую тайну и <br />
+                    <span class="semi-bold yellow"
+                      >с точностью определить дату и время вашей смерти,
+                    </span>
+                    а также предшествующую этому событию причину
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="main__approve js-main-approve">
+              <div class="wrapper">
+                <picture class="img">
+                  <source
+                    srcset="img/bg__approve.jpg"
+                    media="(min-width: 0px) and (min-width: 769px)"
+                  />
+                  <source
+                    srcset="img/bg__approve--small.jpg"
+                    media="(min-width: 0px) and (max-width: 768px)"
+                  />
+                  <img
+                    src="img/bg__approve.jpg"
+                    alt="Задний фон"
+                    title="Задний фон"
+                  />
+                </picture>
+                <span class="text"
+                  >Многие не верят предсказаниям и мы решили доказать каждому,
+                  <br />
+                  <span class="yellow">
+                    что прогноз может изменить жизнь любого человека!
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="main__question js-main-question">
+              <div class="wrapper">
+                <span class="text yellow capitilize"
+                  >Боитесь ли вы умереть?</span
+                >
+                <div class="btn--container">
+                  <button class="btn" v-on:click="toNextPage">
+                    <span class="btn__text">Да</span>
+                  </button>
+                  <button class="btn" v-on:click="toNextPage">
+                    <span class="btn__text">Нет</span>
+                  </button>
+                  <span class="btn__help">Вопрос 1-5</span>
+                </div>
+              </div>
+            </div>
+            <div class="main__footer js-main-footer">
+              <div class="wrapper">
+                <span class="text text--strange"
+                  >Вы, конечно, умрете. <br />
+                  И все, с кем вы знакомы, тоже однажды умрут.</span
+                >
+                <div class="results--footer">
+                  TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT.
+                  PRIN FOLOSIREA LUI DECLARATI CA AVETI 18 ANI IMPLINITI,
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content question" v-else-if="page === 2" :key="2">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="question__header">
+                  <span class="text text--strange">
+                    Мы расскажем Вам не только подробности вашей смерти, но
+                    также поможем Вам избежать этой ужасной даты и продлить вашу
+                    жизнь на многие годы.
+                  </span>
+                </div>
+                <div class="question--container">
+                  <span class="question__title yellow text capitilize"
+                    >Когда Вы чувствуете себя наиболее комфортно?</span
+                  >
+                  <div class="btn--container">
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Утро</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">День</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Вечер</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Ночь</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question__footer">Вопрос {{ page }}-5</div>
+            </div>
+          </div>
+          <div class="content question" v-else-if="page === 3" :key="3">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="question__header">
+                  <span class="text text--strange">
+                    Уже совсем скоро Вы узнаете много интересного о своем
+                    будущем!.
+                  </span>
+                </div>
+                <div class="question--container">
+                  <span class="question__title yellow text capitilize"
+                    >Укажите свою дату рождения:</span
+                  >
+                  <div class="btn--container">
+                    <div class="custom-select">
+                      <select ref="select1">
+                        <option value="0" selected>День:</option>
+                        <option v-for="day in dayArr" :value="day" :key="day">
+                          {{day}}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="custom-select">
+                      <select ref="select2">
+                        <option value="0">Месяц:</option>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                        <option value="9">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                    <div class="custom-select">
+                      <select ref="select3">
+                        <option value="0">Год:</option>
+                        <option
+                          v-for="year in yearArr"
+                          :value="year"
+                          :key="year"
+                        >
+                          {{year}}
+                        </option>
+                      </select>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      v-on:click="checkSelect()"
+                    >
+                      <span class="btn__text">Далее</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question__footer">Вопрос {{ page }}-5</div>
+            </div>
+          </div>
+          <div class="content question" v-else-if="page === 4" :key="41">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="question__header">
+                  <span class="text text--strange">
+                    Смерть родного человека – одно из тяжелейших испытаний в
+                    жизни каждого из нас!
+                  </span>
+                </div>
+                <div class="question--container">
+                  <span class="question__title yellow text capitilize"
+                    >Снятся ли Вам умершие люди?</span
+                  >
+                  <div class="btn--container">
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Да</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Нет</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Иногда</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question__footer">Вопрос {{ page }}-5</div>
+            </div>
+          </div>
+          <div class="content question" v-else-if="page === 5" :key="5">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="question__header">
+                  <span class="text text--white" v-if="age < 35">
+                    <span class="text text--strange">
+                      По вам скучает очень близкий человек, которого больше нет
+                      в мире живых.
+                    </span>
+                  </span>
+                  <span
+                    class="text text--white"
+                    v-else-if="age >= 36 && age <= 45"
+                  >
+                    <span class="text text--strange">
+                      По вам скучает очень близкий человек, которого больше нет
+                      в мире живых. Возможно это дедушка или бабушка.
+                    </span>
+                  </span>
+                  <span class="text text--white" v-else>
+                    <span class="text text--strange">
+                      По вам скучает очень близкий человек, которого больше нет
+                      в мире живых. Возможно это кто-то из Ваших родителей.
+                    </span>
+                  </span>
+                </div>
+                <div class="question--container">
+                  <span
+                    class="question__title question__title--big yellow text capitilize"
+                    >Запись, которую Вы услышите, может шокировать людей с
+                    неокрепшей психикой. Вы готовы узнать, что ждет именно
+                    Вас?</span
+                  >
+                  <div class="btn--container">
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Да</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Нет</span>
+                    </button>
+                    <button type="button" class="btn" v-on:click="toNextPage">
+                      <span class="btn__text">Иногда</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question__footer">Вопрос {{ page }}-5</div>
+            </div>
+          </div>
+          <div class="content question" v-else-if="page === 6" :key="6">
+            <div class="wrapper">
+              <div class="question__audio">
+                <audio controls class="js-audio" autoplay ref="audio">
+                  <source src="audio/money.mp3" type="audio/mp3" />
+                </audio>
+                <span class="img">
+                  <img src="img/audio.svg" alt="Аудио" title="Аудио" />
+                </span>
+                <div class="audio-track">
+                  <div
+                    class="audio-track-length"
+                    ref="audioTrack"
+                    :style="percent"
+                  ></div>
+                </div>
+                <span class="audio-percent text">{{percent.width}}</span>
+                <span class="audio-text">Запись сообщения</span>
+              </div>
+            </div>
+          </div>
+          <div class="content question results" v-else-if="page === 7" :key="7">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="question__header">
+                  <span class="text text--white"
+                    ><span class="text text--strange">
+                      Спасибо за Ваши ответы!
+                      <span class="bold"
+                        >Мы подготовили для Вас персональную аудио запись с
+                        Вашим прогнозом.</span
+                      >
+                    </span></span
+                  >
+                </div>
+                <span class="text results--thin results--top-text"
+                  >Вы можете узнать, как повлиять на события, которые ожидают
+                  вас в ближайшем будущем.
+                </span>
+                <span class="results--attention text yellow">
+                  <span class="bold capitilize"
+                    >Первое значимое событие может произойти уже
+                    {{currentDate.day +
+                    1}}.{{currentDate.month}}.{{currentDate.year}} </span
+                  >, Вам надо быть готовым, что бы последствия не оказались
+                  необратимыми.
+                </span>
+                <span class="text results--thin results--bottom-text"
+                  >Нажмите на кнопку ниже прямо сейчас и наберите наш номер
+                  телефона. Прослушайте важную информацию!
+                </span>
+                <button class="btn" type="button" v-on:click="fetchData()">
+                  <span class="btn__text">Позвонить и прослушать</span>
+                </button>
+              </div>
+              <div class="results--footer">
+                TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT.
+                PRIN FOLOSIREA LUI DECLARATI CA AVETI 18 ANI IMPLINITI,
+              </div>
+            </div>
+          </div>
+          <div class="content question results" v-else-if="page === 8" :key="8">
+            <div class="wrapper">
+              <div class="question--top">
+                <div class="face">
+                  <img
+                    src="img/face-bg.svg"
+                    alt="Задний фон лица"
+                    title="Задний фон лица"
+                    class="face__bg"
+                  />
+                  <img
+                    src="img/luke.jpg"
+                    alt="Лицо"
+                    title="Лицо"
+                    class="face__img"
+                  />
+                </div>
+                <ul class="results--list">
+                  <li class="item text">
+                    Имя: <span class="yellow">{{person.name}}</span>
+                  </li>
+                  <li class="item text">
+                    Высота: <span class="yellow">{{person.height}}см.</span>
+                  </li>
+                  <li class="item text">
+                    Вес: <span class="yellow">{{person.mass}}кг.</span>
+                  </li>
+                  <li class="item text">
+                    Цвет волос:
+                    <span class="yellow">{{person.hair_color}}</span>
+                  </li>
+                  <li class="item text">
+                    Цвет кожи: <span class="yellow">{{person.skin_color}}</span>
+                  </li>
+                  <li class="item text">
+                    Цвет глаз: <span class="yellow">{{person.eye_color}}</span>
+                  </li>
+                  <li class="item text">
+                    Дата рождения:
+                    <span class="yellow">{{person.birth_year}}</span>
+                  </li>
+                  <li class="item text">
+                    Пол: <span class="yellow">{{person.gender}}</span>
+                  </li>
+                </ul>
+                <button class="btn" type="button" v-on:click="toMainPage()">
+                  <span class="btn__text">На главную</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
